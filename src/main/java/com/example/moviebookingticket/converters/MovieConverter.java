@@ -3,15 +3,17 @@ package com.example.moviebookingticket.converters;
 import com.example.moviebookingticket.dto.MovieDto;
 import com.example.moviebookingticket.entity.MovieEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class MovieConverter implements BidirectionalConverter<MovieDto, MovieEntity>{
+@Component
+public class MovieConverter implements BidirectionalConverter<MovieDto, MovieEntity> {
 
     @Autowired
     private TheaterConverter theaterConverter;
 
     @Override
     public MovieDto toDto(MovieEntity movieEntity) {
-        MovieDto movieDto=new MovieDto();
+        MovieDto movieDto = new MovieDto();
         movieDto.setId(movieEntity.getId());
         movieDto.setName(movieEntity.getName());
         movieDto.setType(movieEntity.getType());
@@ -23,7 +25,7 @@ public class MovieConverter implements BidirectionalConverter<MovieDto, MovieEnt
 
     @Override
     public MovieEntity toEntity(MovieDto movieDto) {
-        MovieEntity movieEntity=new MovieEntity();
+        MovieEntity movieEntity = new MovieEntity();
         movieEntity.setId(movieDto.getId());
         movieEntity.setName(movieDto.getName());
         movieEntity.setType(movieDto.getType());

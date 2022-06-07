@@ -3,6 +3,7 @@ package com.example.moviebookingticket.dto;
 import com.example.moviebookingticket.entity.UserEntity;
 import lombok.Getter;
 import lombok.Setter;
+
 import java.util.Date;
 
 @Getter

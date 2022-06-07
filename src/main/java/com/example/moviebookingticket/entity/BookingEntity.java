@@ -11,7 +11,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name="booking")
+@Table(name = "booking")
 @Where(clause = "deleted=0")
 @Getter
 @Setter
@@ -20,7 +20,7 @@ import java.util.Date;
 public class BookingEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",unique = true,updatable = false,nullable = false)
+    @Column(name = "id", unique = true, updatable = false, nullable = false)
     private Long id;
 
     @Column(name = "seat_amount")
@@ -35,7 +35,7 @@ public class BookingEntity {
     private UserEntity user;
 
     @ManyToOne
-    @JoinColumn(name="movie_id")
+    @JoinColumn(name = "movie_id")
     @JsonIgnore
     private MovieEntity movie;
 }

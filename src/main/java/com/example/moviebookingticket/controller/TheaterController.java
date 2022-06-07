@@ -15,11 +15,12 @@ public class TheaterController {
     private TheaterService theaterService;
 
     @GetMapping("/all")
-    public List<TheaterDto>getAllTheaters(){
-       return theaterService.getAllTheaters();
+    public List<TheaterDto> getAllTheaters() {
+        return theaterService.getAllTheaters();
     }
+
     @PostMapping("/add")
-    public void addTheater(@RequestBody TheaterDto theaterDto){
+    public void addTheater(@RequestBody TheaterDto theaterDto) {
         theaterService.addTheater(theaterDto);
     }
 }

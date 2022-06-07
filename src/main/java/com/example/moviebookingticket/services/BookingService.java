@@ -14,37 +14,27 @@ import java.util.stream.Collectors;
 @Service
 public class BookingService {
 
-@Autowired
+    @Autowired
     private BookingRepository bookingRepository;
 
-@Autowired
+    @Autowired
     private BookingConverter bookingConverter;
 
-public List<BookingDto>getAllBookings(){
-   return bookingRepository.findAll().stream().map(bookingConverter::toDto).collect(Collectors.toList());
-}
-public void addBooking(BookingDto bookingDto){
-    BookingEntity bookingEntity=bookingConverter.toEntity(bookingDto);
-    bookingRepository.save(bookingEntity);
-}
-    public Optional<BookingEntity> getBookingById(Long id){
-        BookingDto bookingDto=bookingConverter.toDto(new BookingEntity());
-        return  bookingRepository.findById(id);
-    }
-    public void deleteBooking(Long id){
-    bookingRepository.deleteById(id);
+    public List<BookingDto> getAllBookings() {
+        return bookingRepository.findAll().stream().map(bookingConverter::toDto).collect(Collectors.toList());
     }
 
-   /* public List<BookingEntity> getAllBookings(){
-        return bookingRepository.findAll();
+    public void addBooking(BookingDto bookingDto) {
+        BookingEntity bookingEntity = bookingConverter.toEntity(bookingDto);
+        bookingRepository.save(bookingEntity);
     }
-    public void addBooking(BookingEntity bookingEntity){
-            bookingRepository.save(bookingEntity);
-    }
-    public Optional<BookingEntity> getBookingById(Long id){
+
+    public Optional<BookingEntity> getBookingById(Long id) {
+        BookingDto bookingDto = bookingConverter.toDto(new BookingEntity());
         return bookingRepository.findById(id);
     }
+
     public void deleteBooking(Long id) {
         bookingRepository.deleteById(id);
-    }*/
+    }
 }

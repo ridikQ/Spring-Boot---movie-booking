@@ -18,24 +18,18 @@ public class MovieService {
     @Autowired
     private MovieConverter movieConverter;
 
-    public List<MovieDto>getAllMovies(){
+    public List<MovieDto> getAllMovies() {
         return movieRepository.findAll().stream().map(movieConverter::toDto).collect(Collectors.toList());
     }
-    public void addMovie(MovieDto movieDto){
-        MovieEntity movieEntity=movieConverter.toEntity(movieDto);
+
+    public void addMovie(MovieDto movieDto) {
+        MovieEntity movieEntity = movieConverter.toEntity(movieDto);
         movieRepository.save(movieEntity);
-    }
-    public void deleteMovie(Long id){
-    movieRepository.deleteById(id);
     }
 
-/*    public List<MovieEntity> getAllMovies(){
-        return movieRepository.findAll();
-    }
-    public void addMovie(MovieEntity movieEntity){
-        movieRepository.save(movieEntity);
-    }
-    public void deleteMovie(Long id){
+    public void deleteMovie(Long id) {
         movieRepository.deleteById(id);
-    }*/
+    }
+
+
 }

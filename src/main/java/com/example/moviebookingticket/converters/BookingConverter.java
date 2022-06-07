@@ -3,7 +3,9 @@ package com.example.moviebookingticket.converters;
 import com.example.moviebookingticket.dto.BookingDto;
 import com.example.moviebookingticket.entity.BookingEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BookingConverter implements BidirectionalConverter<BookingDto, BookingEntity> {
 
     @Autowired
@@ -14,7 +16,7 @@ public class BookingConverter implements BidirectionalConverter<BookingDto, Book
 
     @Override
     public BookingDto toDto(BookingEntity bookingEntity) {
-        BookingDto bookingDto=new BookingDto();
+        BookingDto bookingDto = new BookingDto();
         bookingDto.setId(bookingEntity.getId());
         bookingDto.setSeatAmount(bookingEntity.getSeatAmount());
         bookingDto.setDate(bookingEntity.getDate());
@@ -25,7 +27,7 @@ public class BookingConverter implements BidirectionalConverter<BookingDto, Book
 
     @Override
     public BookingEntity toEntity(BookingDto bookingDto) {
-        BookingEntity bookingEntity=new BookingEntity();
+        BookingEntity bookingEntity = new BookingEntity();
         bookingEntity.setId(bookingDto.getId());
         bookingEntity.setSeatAmount(bookingDto.getSeatAmount());
         bookingEntity.setDate(bookingDto.getDate());

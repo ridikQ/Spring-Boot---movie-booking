@@ -18,18 +18,14 @@ public class TheaterService {
     @Autowired
     private TheaterConverter theaterConverter;
 
-    public List<TheaterDto>getAllTheaters(){
+    public List<TheaterDto> getAllTheaters() {
         return theaterRepository.findAll().stream().map(theaterConverter::toDto).collect(Collectors.toList());
     }
-    public void addTheater(TheaterDto theaterDto){
-        TheaterEntity theaterEntity=theaterConverter.toEntity(theaterDto);
+
+    public void addTheater(TheaterDto theaterDto) {
+        TheaterEntity theaterEntity = theaterConverter.toEntity(theaterDto);
         theaterRepository.save(theaterEntity);
     }
 
-    /*public List<TheaterEntity>getAllTheaters(){
-        return theaterRepository.findAll();
-    }
-    public void addTheater(TheaterEntity theaterEntity){
-        theaterRepository.save(theaterEntity);
-    }*/
+
 }

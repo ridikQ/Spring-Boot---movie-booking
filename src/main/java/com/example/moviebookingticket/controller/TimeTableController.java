@@ -16,7 +16,7 @@ public class TimeTableController {
     private TimeTableService timeTableService;
 
     @PostMapping("/add")
-    public void addTimeTable(@RequestBody TimeTableDto timeTableDto){
+    public void addTimeTable(@RequestBody TimeTableDto timeTableDto) {
         timeTableService.addTimeTable(timeTableDto);
     }
 }

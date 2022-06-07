@@ -11,23 +11,26 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/booking")
 public class BookingController {
-@Autowired
-private BookingService bookingService;
+    @Autowired
+    private BookingService bookingService;
 
-@GetMapping("/all")
-    public List<BookingDto>getBooking(){
-  return bookingService.getAllBookings();
-}
-@PostMapping("/add")
-public void addBooking(@RequestBody BookingDto bookingDto){
-    bookingService.addBooking(bookingDto);
-}
-@GetMapping("/{id}")
- public void getBookingById(@PathVariable ("id")Long id){
-    bookingService.getBookingById(id);
-}
-@DeleteMapping("/{id}")
-    public void deleteBooking(@PathVariable ("id")Long id){
-    bookingService.deleteBooking(id);
-}
+    @GetMapping("/all")
+    public List<BookingDto> getBooking() {
+        return bookingService.getAllBookings();
+    }
+
+    @PostMapping("/add")
+    public void addBooking(@RequestBody BookingDto bookingDto) {
+        bookingService.addBooking(bookingDto);
+    }
+
+    @GetMapping("/{id}")
+    public void getBookingById(@PathVariable("id") Long id) {
+        bookingService.getBookingById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteBooking(@PathVariable("id") Long id) {
+        bookingService.deleteBooking(id);
+    }
 }

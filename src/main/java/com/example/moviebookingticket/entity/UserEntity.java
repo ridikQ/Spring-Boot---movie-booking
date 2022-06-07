@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name="user")
+@Table(name = "user")
 @Where(clause = "deleted=0")
 @Getter
 @Setter
@@ -21,30 +21,30 @@ import java.util.List;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",unique = true,updatable = false,nullable = false)
+    @Column(name = "id", unique = true, updatable = false, nullable = false)
     private Long id;
 
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
 
-    @Column(name="surname")
+    @Column(name = "surname")
     private String surname;
 
-    @Column(name="birthdate")
+    @Column(name = "birthdate")
     private Date birthdate;
 
-    @Column(name="role")
+    @Column(name = "role")
     private String role;
 
-    @Column(name="email")
+    @Column(name = "email")
     private String email;
 
-    @Column(name="password")
+    @Column(name = "password")
     private String password;
 
-    @Column(name="telephone")
+    @Column(name = "telephone")
     private String telephone;
 
     @OneToMany(mappedBy = "user")
-    private List<BookingEntity>bookingEntities=new ArrayList<>();
+    private List<BookingEntity> bookingEntities = new ArrayList<>();
 }

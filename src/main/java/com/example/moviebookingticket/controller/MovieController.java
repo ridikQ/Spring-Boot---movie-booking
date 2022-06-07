@@ -15,15 +15,17 @@ public class MovieController {
     private MovieService movieService;
 
     @GetMapping("/all")
-    public List<MovieDto>getAllMovies(){
+    public List<MovieDto> getAllMovies() {
         return movieService.getAllMovies();
     }
+
     @PostMapping("/add")
-    public void addMovie(@RequestBody MovieDto movieDto){
+    public void addMovie(@RequestBody MovieDto movieDto) {
         movieService.addMovie(movieDto);
     }
+
     @DeleteMapping("/{id}")
-    public void deleteMovie(@PathVariable Long id){
+    public void deleteMovie(@PathVariable Long id) {
         movieService.deleteMovie(id);
     }
 }

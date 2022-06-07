@@ -16,12 +16,9 @@ public class TimeTableService {
     @Autowired
     private TimeTableConverter timeTableConverter;
 
-   public void addTimeTable(TimeTableDto timeTableDto){
-        TimeTableEntity timeTableEntity=timeTableConverter.toEntity(timeTableDto);
+    public void addTimeTable(TimeTableDto timeTableDto) {
+        TimeTableEntity timeTableEntity = timeTableConverter.toEntity(timeTableDto);
         timeTableRepository.save(timeTableEntity);
     }
 }
- /*   public void addTimeTable(TimeTableEntity timeTableEntity){
-        timeTableRepository.save(timeTableEntity);
-    }
-*/
+

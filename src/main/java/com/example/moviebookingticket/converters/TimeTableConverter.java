@@ -3,15 +3,17 @@ package com.example.moviebookingticket.converters;
 import com.example.moviebookingticket.dto.TimeTableDto;
 import com.example.moviebookingticket.entity.TimeTableEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class TimeTableConverter implements BidirectionalConverter<TimeTableDto,TimeTableEntity>{
+@Component
+public class TimeTableConverter implements BidirectionalConverter<TimeTableDto, TimeTableEntity> {
 
     @Autowired
     private MovieConverter movieConverter;
 
     @Override
     public TimeTableDto toDto(TimeTableEntity timeTableEntity) {
-        TimeTableDto timeTableDto=new TimeTableDto();
+        TimeTableDto timeTableDto = new TimeTableDto();
         timeTableDto.setId(timeTableEntity.getId());
         timeTableDto.setDate(timeTableEntity.getDate());
         timeTableDto.setStartTime(timeTableEntity.getStartTime());
@@ -22,7 +24,7 @@ public class TimeTableConverter implements BidirectionalConverter<TimeTableDto,T
 
     @Override
     public TimeTableEntity toEntity(TimeTableDto timeTableDto) {
-        TimeTableEntity timeTableEntity=new TimeTableEntity();
+        TimeTableEntity timeTableEntity = new TimeTableEntity();
         timeTableEntity.setId(timeTableDto.getId());
         timeTableEntity.setDate(timeTableDto.getDate());
         timeTableEntity.setStartTime(timeTableDto.getStartTime());

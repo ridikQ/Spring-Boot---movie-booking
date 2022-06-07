@@ -1,10 +1,8 @@
 package com.example.moviebookingticket.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
+@Data
 public class TheaterDto {
 
     private Long id;

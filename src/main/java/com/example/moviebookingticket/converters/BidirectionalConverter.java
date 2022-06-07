@@ -1,6 +1,6 @@
 package com.example.moviebookingticket.converters;
 
-public interface BidirectionalConverter <DTO,ENTITY>{
+public interface BidirectionalConverter<DTO, ENTITY> {
 
     public DTO toDto(ENTITY entity);
 

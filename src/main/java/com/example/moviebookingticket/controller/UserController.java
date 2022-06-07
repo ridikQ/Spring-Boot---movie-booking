@@ -15,15 +15,17 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/all")
-    public List<UserDto>getAllUser(){
+    public List<UserDto> getAllUser() {
         return userService.getAllUsers();
     }
+
     @PostMapping("/add")
-    public void addUser(@RequestBody UserDto userDto){
+    public void addUser(@RequestBody UserDto userDto) {
         userService.addUser(userDto);
     }
+
     @GetMapping("/{id}")
-    public void getUserById(@PathVariable("id") Long id){
+    public void getUserById(@PathVariable("id") Long id) {
         userService.getUserById(id);
     }
 }
