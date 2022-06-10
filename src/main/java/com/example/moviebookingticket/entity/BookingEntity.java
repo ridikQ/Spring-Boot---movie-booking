@@ -8,10 +8,13 @@ import lombok.Setter;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-@Table(name = "booking")
+@Table(name = "booking123")
 @Where(clause = "deleted=0")
 @Getter
 @Setter
@@ -24,9 +27,11 @@ public class BookingEntity {
     private Long id;
 
     @Column(name = "seat_amount")
+    @Size(min=1,max =4)
     private Integer seatAmount;
 
     @Column(name = "date")
+    @FutureOrPresent
     private Date date;
 
     @ManyToOne

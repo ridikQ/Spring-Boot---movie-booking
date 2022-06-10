@@ -4,6 +4,7 @@ import com.example.moviebookingticket.entity.UserEntity;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Getter
@@ -12,6 +13,7 @@ public class BookingDto {
 
     private Long id;
 
+    @Size(min=1,max=4)
     private Integer seatAmount;
 
     private Date date;

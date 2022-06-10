@@ -1,10 +1,7 @@
 package com.example.moviebookingticket.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -14,8 +11,7 @@ import java.sql.Time;
 @Entity
 @Table(name = "timeTable")
 @Where(clause = "deleted=0")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class TimeTableEntity {
