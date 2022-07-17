@@ -4,6 +4,8 @@ import com.example.moviebookingticket.dto.UserDto;
 import com.example.moviebookingticket.entity.UserEntity;
 import com.example.moviebookingticket.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,13 +17,14 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/all")
-    public List<UserDto> getAllUser() {
-        return userService.getAllUsers();
+    public ResponseEntity<List<UserDto>> getAllUser() {
+        return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public void addUser(@RequestBody UserDto userDto) {
-        userService.addUser(userDto);
+    public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
+
+        return ResponseEntity.ok(userService.addUser(userDto)) ;
     }
 
     @GetMapping("/{id}")

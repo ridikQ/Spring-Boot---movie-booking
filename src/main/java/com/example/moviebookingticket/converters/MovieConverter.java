@@ -19,7 +19,7 @@ public class MovieConverter implements BidirectionalConverter<MovieDto, MovieEnt
         movieDto.setType(movieEntity.getType());
         movieDto.setTechnology(movieEntity.getTechnology());
         movieDto.setRating(movieEntity.getRating());
-        movieDto.setTheaterDto(theaterConverter.toDto(movieEntity.getTheaterId()));
+        movieDto.setTheater(theaterConverter.toDto(movieEntity.getTheater()));
         return movieDto;
     }
 
@@ -31,7 +31,7 @@ public class MovieConverter implements BidirectionalConverter<MovieDto, MovieEnt
         movieEntity.setType(movieDto.getType());
         movieEntity.setTechnology(movieDto.getTechnology());
         movieEntity.setRating(movieDto.getRating());
-        movieEntity.setTheaterId(theaterConverter.toEntity(movieDto.getTheaterDto()));
+        movieEntity.setTheater(theaterConverter.toEntity(movieDto.getTheater()));
         return movieEntity;
     }
 }

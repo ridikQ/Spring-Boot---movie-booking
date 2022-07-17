@@ -24,9 +24,10 @@ public class BookingService {
         return bookingRepository.findAll().stream().map(bookingConverter::toDto).collect(Collectors.toList());
     }
 
-    public void addBooking(BookingDto bookingDto) {
+    public BookingDto addBooking(BookingDto bookingDto) {
         BookingEntity bookingEntity = bookingConverter.toEntity(bookingDto);
         bookingRepository.save(bookingEntity);
+        return bookingDto;
     }
 
     public Optional<BookingEntity> getBookingById(Long id) {

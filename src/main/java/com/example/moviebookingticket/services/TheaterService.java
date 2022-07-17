@@ -22,9 +22,10 @@ public class TheaterService {
         return theaterRepository.findAll().stream().map(theaterConverter::toDto).collect(Collectors.toList());
     }
 
-    public void addTheater(TheaterDto theaterDto) {
+    public TheaterDto addTheater(TheaterDto theaterDto) {
         TheaterEntity theaterEntity = theaterConverter.toEntity(theaterDto);
         theaterRepository.save(theaterEntity);
+        return theaterDto;
     }
 
 

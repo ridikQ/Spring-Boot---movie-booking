@@ -1,14 +1,13 @@
 package com.example.moviebookingticket.dto;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.sql.Date;
 import java.sql.Time;
 
 @Getter
 @Setter
+
 public class TimeTableDto {
 
     private Long id;

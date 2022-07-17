@@ -1,10 +1,7 @@
 package com.example.moviebookingticket.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Where;
 import org.springframework.stereotype.Component;
 
@@ -14,14 +11,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "movie")
-@Where(clause = "deleted=0")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class MovieEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", unique = true, updatable = false, nullable = false)
     private Long id;
 
@@ -37,10 +32,10 @@ public class MovieEntity {
     @Column(name = "rating")
     private Double rating;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.ALL})
     @JoinColumn(name = "theater_id")
     @JsonIgnore
-    private TheaterEntity theaterId;
+    private TheaterEntity theater;
 
     @OneToMany(mappedBy = "movie")
     private List<BookingEntity> bookingEntities = new ArrayList<>();

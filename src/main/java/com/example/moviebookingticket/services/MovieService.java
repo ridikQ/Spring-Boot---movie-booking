@@ -3,6 +3,7 @@ package com.example.moviebookingticket.services;
 import com.example.moviebookingticket.converters.MovieConverter;
 import com.example.moviebookingticket.dto.MovieDto;
 import com.example.moviebookingticket.entity.MovieEntity;
+import com.example.moviebookingticket.entity.TheaterEntity;
 import com.example.moviebookingticket.repository.MovieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,9 +23,11 @@ public class MovieService {
         return movieRepository.findAll().stream().map(movieConverter::toDto).collect(Collectors.toList());
     }
 
-    public void addMovie(MovieDto movieDto) {
-        MovieEntity movieEntity = movieConverter.toEntity(movieDto);
+    public MovieDto addMovie(MovieDto movieDto) {
+        MovieEntity movieEntity=movieConverter.toEntity(movieDto);
         movieRepository.save(movieEntity);
+        return movieDto;
+
     }
 
     public void deleteMovie(Long id) {

@@ -14,8 +14,7 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-@Table(name = "booking123")
-@Where(clause = "deleted=0")
+@Table(name = "booking")
 @Getter
 @Setter
 @NoArgsConstructor

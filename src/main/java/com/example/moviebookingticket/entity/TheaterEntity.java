@@ -1,9 +1,6 @@
 package com.example.moviebookingticket.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -14,9 +11,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "theater")
-@Where(clause = "deleted=0")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class TheaterEntity {
@@ -31,7 +26,7 @@ public class TheaterEntity {
     @Column(name = "seat_total")
     private Integer seatTotal;
 
-    @OneToMany(mappedBy = "theaterId")
+    @OneToMany(mappedBy = "theater")
     private List<MovieEntity> movie = new ArrayList<>();
 
 }

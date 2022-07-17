@@ -15,5 +15,5 @@ public class MovieDto {
 
     private Double rating;
 
-    private TheaterDto theaterDto;
+    private TheaterDto theater;
 }

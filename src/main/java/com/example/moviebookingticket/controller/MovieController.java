@@ -4,6 +4,8 @@ import com.example.moviebookingticket.dto.MovieDto;
 import com.example.moviebookingticket.entity.MovieEntity;
 import com.example.moviebookingticket.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,17 +17,18 @@ public class MovieController {
     private MovieService movieService;
 
     @GetMapping("/all")
-    public List<MovieDto> getAllMovies() {
-        return movieService.getAllMovies();
+    public ResponseEntity< List<MovieDto>> getAllMovies() {
+        return new ResponseEntity<>(movieService.getAllMovies(), HttpStatus.OK);
     }
 
     @PostMapping("/add")
-    public void addMovie(@RequestBody MovieDto movieDto) {
-        movieService.addMovie(movieDto);
+    public ResponseEntity<MovieDto> addMovie(@RequestBody MovieDto movieDto) {
+        return ResponseEntity.ok(movieService.addMovie(movieDto));
     }
 
     @DeleteMapping("/{id}")
-    public void deleteMovie(@PathVariable Long id) {
+    public ResponseEntity<MovieDto> deleteMovie(@PathVariable("id") Long id) {
         movieService.deleteMovie(id);
+        return new ResponseEntity("Movie deleted",HttpStatus.NO_CONTENT);
     }
 }

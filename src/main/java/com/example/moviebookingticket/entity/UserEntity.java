@@ -1,9 +1,6 @@
 package com.example.moviebookingticket.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -13,14 +10,12 @@ import java.util.List;
 
 @Entity
 @Table(name = "user")
-@Where(clause = "deleted=0")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", unique = true, updatable = false, nullable = false)
     private Long id;
 
@@ -36,7 +31,7 @@ public class UserEntity {
     @Column(name = "role")
     private String role;
 
-    @Column(name = "email",unique = true)
+    @Column(name = "email")
     private String email;
 
     @Column(name = "password")
