@@ -1,7 +1,8 @@
 package com.example.moviebookingticket.exception;
 
-public class RequestAlreadyProcessed extends Exception {
-    public RequestAlreadyProcessed(String errormessage) {
+public class InvalidDateException extends Exception {
+    public InvalidDateException(String errormessage) {
+
         super(errormessage);
     }
 }

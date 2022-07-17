@@ -5,6 +5,7 @@ import com.example.moviebookingticket.converters.TimeTableConverter;
 import com.example.moviebookingticket.dto.TimeTableDto;
 import com.example.moviebookingticket.dto.UserDto;
 import com.example.moviebookingticket.entity.TimeTableEntity;
+import com.example.moviebookingticket.exception.InvalidDateException;
 import com.example.moviebookingticket.repository.TimeTableRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,10 +24,14 @@ public class TimeTableService {
     @Autowired
     private TimeTableConverter timeTableConverter;
 
-    public TimeTableDto addTimeTable(TimeTableDto timeTableDto) {
-        TimeTableEntity timeTableEntity = timeTableConverter.toEntity(timeTableDto);
-        timeTableRepository.save(timeTableEntity);
-        return timeTableDto;
+    public TimeTableDto addTimeTable(TimeTableDto timeTableDto) throws InvalidDateException {
+        if (timeTableDto.getStartTime().after(timeTableDto.getEndTime())|| timeTableDto.getStartTime().equals(timeTableDto.getEndTime())) {
+            throw new InvalidDateException("Enter a valid time");
+        } else {
+            TimeTableEntity timeTableEntity = timeTableConverter.toEntity(timeTableDto);
+            timeTableRepository.save(timeTableEntity);
+            return timeTableDto;
+        }
     }
 }
 

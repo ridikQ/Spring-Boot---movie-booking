@@ -2,23 +2,28 @@ package com.example.moviebookingticket.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
-@Table(name = "time_table")
+@Table(name = "timetable")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class TimeTableEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, updatable = false, nullable = false)
     private Long id;
 
+    @FutureOrPresent
     @Column(name = "date")
     private Date date;
 

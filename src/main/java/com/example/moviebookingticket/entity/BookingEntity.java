@@ -42,4 +42,5 @@ public class BookingEntity {
     @JoinColumn(name = "movie_id")
     @JsonIgnore
     private MovieEntity movie;
+
 }

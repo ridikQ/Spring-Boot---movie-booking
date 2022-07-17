@@ -1,8 +1,11 @@
 package com.example.moviebookingticket.dto;
 
+import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.Value;
 
+import javax.validation.constraints.Null;
 import java.util.Date;
 
 @Getter
@@ -21,5 +24,8 @@ public class UserDto {
 
     private String email;
 
+    private String password;
+
     private String telephone;
+
 }

@@ -23,7 +23,7 @@ public class TheaterEntity {
     @Column(name = "theater_name")
     private String theaterName;
 
-    @Column(name = "seat_total")
+    @Column(name = "seats_total")
     private Integer seatTotal;
 
     @OneToMany(mappedBy = "theater")

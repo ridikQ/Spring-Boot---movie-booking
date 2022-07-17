@@ -2,6 +2,7 @@ package com.example.moviebookingticket.controller;
 
 import com.example.moviebookingticket.dto.TimeTableDto;
 import com.example.moviebookingticket.entity.TimeTableEntity;
+import com.example.moviebookingticket.exception.InvalidDateException;
 import com.example.moviebookingticket.services.TimeTableService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class TimeTableController {
     private TimeTableService timeTableService;
 
     @PostMapping("/add")
-    public ResponseEntity<TimeTableDto>addTimeTable(@RequestBody TimeTableDto timeTableDto) {
+    public ResponseEntity<TimeTableDto>addTimeTable(@RequestBody TimeTableDto timeTableDto)throws InvalidDateException {
        return ResponseEntity.ok(timeTableService.addTimeTable(timeTableDto));
     }
 }

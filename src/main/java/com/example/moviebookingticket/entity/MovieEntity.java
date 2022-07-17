@@ -10,20 +10,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "movie")
+@Table(name = "movies")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class MovieEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, updatable = false, nullable = false)
     private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @Column(name = "type")
+    @Column(name = "movie_type")
     private String type;
 
     @Column(name = "technology")

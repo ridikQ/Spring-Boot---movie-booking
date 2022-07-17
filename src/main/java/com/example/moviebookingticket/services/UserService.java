@@ -3,6 +3,7 @@ package com.example.moviebookingticket.services;
 import com.example.moviebookingticket.converters.UserConverter;
 import com.example.moviebookingticket.dto.UserDto;
 import com.example.moviebookingticket.entity.UserEntity;
+import com.example.moviebookingticket.exception.CustomUserException;
 import com.example.moviebookingticket.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,9 +26,22 @@ public class UserService {
     }
 
     public UserDto addUser(UserDto userDto) {
-        UserEntity userEntity = userConverter.toEntity(userDto);
-        userRepository.save(userEntity);
-        return userDto;
+        if(userDto !=null){
+            if (!userDto.getEmail().isEmpty()){
+                if(!userDto.getPassword().isEmpty()){
+                    UserEntity userEntity = userConverter.toEntity(userDto);
+                    userRepository.save(userEntity);
+                    return userDto;
+                }else{
+                    System.out.println("Password is mandatory");
+                    throw new CustomUserException("Password is mandatory");
+                }
+            }else{
+                System.out.println("Email is mandatory");
+                throw new CustomUserException("Email is mandatory");
+            }
+        }
+        return null;
     }
 
     public Optional<UserEntity> getUserById(Long id) {

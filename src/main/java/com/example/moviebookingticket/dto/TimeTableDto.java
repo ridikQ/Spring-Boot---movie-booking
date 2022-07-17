@@ -14,7 +14,7 @@ public class TimeTableDto {
 
     private Date date;
 
-    private Time startTime;
+    private  Time startTime;
 
     private Time endTime;
 
