@@ -2,6 +2,7 @@ package com.example.moviebookingticket.controller;
 
 import com.example.moviebookingticket.dto.MovieDto;
 import com.example.moviebookingticket.entity.MovieEntity;
+import com.example.moviebookingticket.exception.IllegalStateException;
 import com.example.moviebookingticket.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,7 +23,7 @@ public class MovieController {
     }
 
     @PostMapping("/add")
-    public ResponseEntity<MovieDto> addMovie(@RequestBody MovieDto movieDto) {
+    public ResponseEntity<MovieDto> addMovie(@RequestBody MovieDto movieDto)throws IllegalStateException{
         return ResponseEntity.ok(movieService.addMovie(movieDto));
     }
 
