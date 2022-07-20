@@ -2,10 +2,16 @@ package com.example.moviebookingticket.converters;
 
 import com.example.moviebookingticket.dto.UserDto;
 import com.example.moviebookingticket.entity.UserEntity;
+import com.example.moviebookingticket.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UserConverter implements BidirectionalConverter<UserDto, UserEntity> {
+
+    @Autowired
+    private UserRepository userRepository;
+
     @Override
     public UserDto toDto(UserEntity userEntity) {
         UserDto userDto = new UserDto();
@@ -33,5 +39,8 @@ public class UserConverter implements BidirectionalConverter<UserDto, UserEntity
         userEntity.setPassword(userDto.getPassword());
         userEntity.setTelephone(userDto.getTelephone());
         return userEntity;
+    }
+    public UserEntity getUserId(UserDto dto){
+        return userRepository.getById(dto.getId());
     }
 }

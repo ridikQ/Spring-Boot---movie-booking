@@ -26,8 +26,8 @@ public class MovieService {
     }
 
     public MovieDto addMovie(MovieDto movieDto) throws IllegalStateException{
-        Optional<MovieEntity> studentByEmail=movieRepository.findMovieEntityByName(movieDto.getName());
-        if (studentByEmail.isPresent()){
+        Optional<MovieEntity> movieByName=movieRepository.findMovieEntityByName(movieDto.getName());
+        if (movieByName.isPresent()){
            throw new IllegalStateException("Movie Exist");
         }
         else {

@@ -6,6 +6,8 @@ import com.example.moviebookingticket.entity.UserEntity;
 import com.example.moviebookingticket.exception.CustomUserException;
 import com.example.moviebookingticket.repository.UserRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class UserService {
+
+    Logger logger= LoggerFactory.getLogger(UserService.class);
     @Autowired
     private UserRepository userRepository;
 
@@ -33,11 +37,11 @@ public class UserService {
                     userRepository.save(userEntity);
                     return userDto;
                 }else{
-                    System.out.println("Password is mandatory");
+                   logger.error("password nedded");
                     throw new CustomUserException("Password is mandatory");
                 }
             }else{
-                System.out.println("Email is mandatory");
+                logger.debug("email nedded");
                 throw new CustomUserException("Email is mandatory");
             }
         }
