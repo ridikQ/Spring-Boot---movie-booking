@@ -34,9 +34,6 @@ public class BookingConverter implements BidirectionalConverter<BookingDto, Book
        // bookingEntity.setUser(userConverter.toEntity(bookingDto.getUserDto()));
        // bookingEntity.setMovie(movieConverter.toEntity(bookingDto.getMovieDto()));
 
-       // bookingEntity.setUser(userConverter.getUserId(bookingDto.getUserDto()));
-        //bookingEntity.setMovie(movieConverter.getMovieId(bookingDto.getMovieDto()));
-
         bookingEntity.setUser(userConverter.getUserId(bookingDto.getUserDto()));
         bookingEntity.setMovie(movieConverter.getMovieId(bookingDto.getMovieDto()));
         return bookingEntity;

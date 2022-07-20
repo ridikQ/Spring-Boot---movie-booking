@@ -29,7 +29,8 @@ public class TimeTableConverter implements BidirectionalConverter<TimeTableDto, 
         timeTableEntity.setDate(timeTableDto.getDate());
         timeTableEntity.setStartTime(timeTableDto.getStartTime());
         timeTableEntity.setEndTime(timeTableDto.getEndTime());
-        timeTableEntity.setMovieEntity(movieConverter.toEntity(timeTableDto.getMovieDto()));
+        //timeTableEntity.setMovieEntity(movieConverter.toEntity(timeTableDto.getMovieDto()));
+        timeTableEntity.setMovieEntity(movieConverter.getMovieId(timeTableDto.getMovieDto()));
         return timeTableEntity;
     }
 }

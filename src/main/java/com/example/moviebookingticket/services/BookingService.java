@@ -30,10 +30,9 @@ public class BookingService {
         return bookingDto;
     }
 
-    public Optional<BookingEntity> getBookingById(Long id) {
-        BookingDto bookingDto = bookingConverter.toDto(new BookingEntity());
-        return bookingRepository.findById(id);
-    }
+   public BookingDto getBookingById(Long id){
+        return bookingConverter.toDto(bookingRepository.findById(id).get());
+   }
 
     public void deleteBooking(Long id) {
         bookingRepository.deleteById(id);

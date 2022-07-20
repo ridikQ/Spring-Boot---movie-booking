@@ -4,6 +4,7 @@ import com.example.moviebookingticket.converters.UserConverter;
 import com.example.moviebookingticket.dto.UserDto;
 import com.example.moviebookingticket.entity.UserEntity;
 import com.example.moviebookingticket.exception.CustomUserException;
+import com.example.moviebookingticket.exception.UserNotFoundException;
 import com.example.moviebookingticket.repository.UserRepository;
 
 import org.slf4j.Logger;
@@ -18,7 +19,8 @@ import java.util.stream.Collectors;
 @Service
 public class UserService {
 
-    Logger logger= LoggerFactory.getLogger(UserService.class);
+    private static final Logger log = LoggerFactory.getLogger(UserService.class);
+
     @Autowired
     private UserRepository userRepository;
 
@@ -37,20 +39,19 @@ public class UserService {
                     userRepository.save(userEntity);
                     return userDto;
                 }else{
-                   logger.error("password nedded");
+                   log.error("Password nedded");
                     throw new CustomUserException("Password is mandatory");
                 }
             }else{
-                logger.debug("email nedded");
+                log.error("Email nedded");
                 throw new CustomUserException("Email is mandatory");
             }
         }
         return null;
     }
+    public UserDto getUserById(Long id){
 
-    public Optional<UserEntity> getUserById(Long id) {
-        UserDto userDto = userConverter.toDto(new UserEntity());
-        return userRepository.findById(id);
+        return userConverter.toDto(userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id)));
     }
 
 

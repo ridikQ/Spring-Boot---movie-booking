@@ -27,7 +27,7 @@ public class BookingEntity {
     private Long id;
 
     @Column(name = "seat_amount")
-    @Range(min=1,max = 4)
+    @Range(min=1,max = 4,message = "U can book only between 1 and 4 seats")
     private Integer seatAmount;
 
     @Column(name = "date")

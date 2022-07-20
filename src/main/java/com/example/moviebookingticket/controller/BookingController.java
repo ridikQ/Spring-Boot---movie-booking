@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "/booking")
+@RequestMapping(path = "/bookings")
 public class BookingController {
     @Autowired
     private BookingService bookingService;
@@ -27,8 +27,8 @@ public class BookingController {
     }
 
     @GetMapping("/{id}")
-    public void getBookingById(@PathVariable("id") Long id) {
-        bookingService.getBookingById(id);
+    public ResponseEntity<BookingDto> getBookingById(@PathVariable("id")Long id){
+      return ResponseEntity.ok(bookingService.getBookingById(id));
     }
 
     @DeleteMapping("/{id}")
