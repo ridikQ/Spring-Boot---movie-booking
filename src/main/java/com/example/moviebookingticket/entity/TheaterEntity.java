@@ -4,6 +4,7 @@ import lombok.*;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
@@ -23,8 +24,9 @@ public class TheaterEntity {
     @Column(name = "theater_name")
     private String theaterName;
 
-    @Column(name = "seats_total")
-    private Integer seatTotal;
+    @Min(value = 0)
+    @Column(name="seats_available")
+    private Integer seatAvailable;
 
     @OneToMany(mappedBy = "theater")
     private List<MovieEntity> movie = new ArrayList<>();

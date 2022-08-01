@@ -1,15 +1,13 @@
 package com.example.moviebookingticket.dto;
 
-import com.sun.istack.NotNull;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.Value;
-
+import lombok.*;
 import javax.validation.constraints.Null;
 import java.util.Date;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserDto {
 
     private Long id;

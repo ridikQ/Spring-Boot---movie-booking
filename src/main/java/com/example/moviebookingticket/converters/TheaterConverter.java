@@ -11,7 +11,7 @@ public class TheaterConverter implements BidirectionalConverter<TheaterDto, Thea
         TheaterDto theaterDto = new TheaterDto();
         theaterDto.setId(theaterEntity.getId());
         theaterDto.setTheaterName(theaterEntity.getTheaterName());
-        theaterDto.setSeatTotal(theaterEntity.getSeatTotal());
+        theaterDto.setSeatAvailable(theaterEntity.getSeatAvailable());
         return theaterDto;
     }
 
@@ -20,7 +20,7 @@ public class TheaterConverter implements BidirectionalConverter<TheaterDto, Thea
         TheaterEntity theaterEntity = new TheaterEntity();
         theaterEntity.setId(theaterDto.getId());
         theaterEntity.setTheaterName(theaterDto.getTheaterName());
-        theaterEntity.setSeatTotal(theaterDto.getSeatTotal());
+        theaterEntity.setSeatAvailable(theaterDto.getSeatAvailable());
         return theaterEntity;
     }
 }

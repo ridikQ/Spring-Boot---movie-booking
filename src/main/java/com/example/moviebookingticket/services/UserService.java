@@ -10,6 +10,9 @@ import com.example.moviebookingticket.repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,8 +30,9 @@ public class UserService {
     @Autowired
     private UserConverter userConverter;
 
-    public List<UserDto> getAllUsers() {
-        return userRepository.findAll().stream().map(userConverter::toDto).collect(Collectors.toList());
+    public List<UserDto> getAllUsers(Integer pageNo,Integer pageSize,String sortBy) {
+        Pageable paging= PageRequest.of(pageNo,pageSize, Sort.by(sortBy));
+        return userRepository.findAll(paging).stream().map(userConverter::toDto).collect(Collectors.toList());
     }
 
     public UserDto addUser(UserDto userDto) {

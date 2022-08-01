@@ -15,5 +15,7 @@ public class MovieDto {
 
     private Double rating;
 
+    private String request;
+
     private TheaterDto theater;
 }

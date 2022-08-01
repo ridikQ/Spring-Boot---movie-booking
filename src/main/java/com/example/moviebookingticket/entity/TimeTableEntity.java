@@ -7,6 +7,7 @@ import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.Min;
 import java.sql.Date;
 import java.sql.Time;
 import java.time.LocalDate;
@@ -23,7 +24,7 @@ public class TimeTableEntity {
     @Column(name = "id", unique = true, updatable = false, nullable = false)
     private Long id;
 
-    @FutureOrPresent
+    @FutureOrPresent(message = "Date need to be in the present or in the future")
     @Column(name = "date")
     private Date date;
 

@@ -4,6 +4,7 @@ import com.example.moviebookingticket.dto.MovieDto;
 import com.example.moviebookingticket.entity.MovieEntity;
 import com.example.moviebookingticket.exception.IllegalStateException;
 import com.example.moviebookingticket.services.MovieService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,16 +18,22 @@ public class MovieController {
     @Autowired
     private MovieService movieService;
 
+    @ApiOperation(value = "Get all movies")
     @GetMapping("/all")
-    public ResponseEntity< List<MovieDto>> getAllMovies() {
-        return new ResponseEntity<>(movieService.getAllMovies(), HttpStatus.OK);
+    public ResponseEntity< List<MovieDto>> getAllMovies(
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "10") Integer pageSize,
+            @RequestParam(defaultValue ="id")String sortBy) {
+        return new ResponseEntity<>(movieService.getAllMovies(pageNo,pageSize,sortBy), HttpStatus.OK);
     }
 
+    @ApiOperation(value = "Add a new movie")
     @PostMapping("/add")
     public ResponseEntity<MovieDto> addMovie(@RequestBody MovieDto movieDto)throws IllegalStateException{
         return ResponseEntity.ok(movieService.addMovie(movieDto));
     }
 
+    @ApiOperation(value = "Delete movie by id")
     @DeleteMapping("/{id}")
     public ResponseEntity<MovieDto> deleteMovie(@PathVariable("id") Long id) {
         movieService.deleteMovie(id);

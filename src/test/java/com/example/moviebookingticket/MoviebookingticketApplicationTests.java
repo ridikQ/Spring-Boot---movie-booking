@@ -1,14 +1,14 @@
 package com.example.moviebookingticket;
 
+
 import com.example.moviebookingticket.dto.BookingDto;
 import com.example.moviebookingticket.dto.UserDto;
-import com.example.moviebookingticket.entity.BookingEntity;
-import com.example.moviebookingticket.entity.MovieEntity;
 import com.example.moviebookingticket.entity.UserEntity;
+import com.example.moviebookingticket.services.UserService;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-
+import org.junit.jupiter.api.Assertions;
+import static org.junit.Assert.assertNull;
 import java.time.LocalDate;
 import java.util.Date;
 
@@ -18,11 +18,23 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class MoviebookingticketApplicationTests {
 
-    @Test
-    void result() {
- /* UserDto userEntity=new UserDto("TEST","TEST","2022-09-05","TEST","TEST","TEST","TEST");
+   /*  @Test
+   public void assertNullWithNoMessage() {
+        UserService userService=new UserService();
+
+        UserEntity headFirstJavaBook =new UserEntity(1L,"Test","Test",new Date(2022-3-3),"Test","Test","Test","Test","Test");
+        UserDto headFirstDesignPatternBook = new UserDto(2L,"Test","Test",new Date(2022-9-9),"Test","Test","Test","Test");
+
+        userService.addUser(headFirstJavaBook);
+        userService.addUser(headFirstDesignPatternBook);
+
+        UserDto actualBook = userService.getUserById(4L);
+        assertNull(actualBook);
+
     }
-    @Test
+*/
+
+   /* @Test
     public UserDto addUser(){
         UserDto userDto=new UserDto();
         userDto.setName("Test");
@@ -32,7 +44,6 @@ class MoviebookingticketApplicationTests {
         userDto.setEmail("Test");
         userDto.setTelephone("123456");
         return userDto;
-    */
-    }
+    }*/
 
 }

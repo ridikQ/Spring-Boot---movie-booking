@@ -1,9 +1,11 @@
 package com.example.moviebookingticket.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -31,9 +33,11 @@ public class UserEntity {
     @Column(name = "role")
     private String role;
 
+ //   @NotEmpty(message = "Email is mandatory")
     @Column(name = "email",unique = true)
     private String email;
 
+ //   @NotEmpty(message = "Password is mandatory")
     @Column(name = "password")
     private String password;
 

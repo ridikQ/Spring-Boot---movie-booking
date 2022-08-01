@@ -25,9 +25,11 @@ public class TimeTableService {
     private TimeTableConverter timeTableConverter;
 
     public TimeTableDto addTimeTable(TimeTableDto timeTableDto) throws InvalidDateException {
-        if (timeTableDto.getStartTime().after(timeTableDto.getEndTime())|| timeTableDto.getStartTime().equals(timeTableDto.getEndTime())) {
+        if (timeTableDto.getStartTime().after(timeTableDto.getEndTime()) || timeTableDto.getStartTime().equals(timeTableDto.getEndTime())) {
             throw new InvalidDateException("Enter a valid time");
-        } else {
+        }
+
+        else {
             TimeTableEntity timeTableEntity = timeTableConverter.toEntity(timeTableDto);
             timeTableRepository.save(timeTableEntity);
             return timeTableDto;

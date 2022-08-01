@@ -13,7 +13,6 @@ public class BookingDto {
 
     private Long id;
 
-    @Size(min=1,max=4)
     private Integer seatAmount;
 
     private Date date;

@@ -9,5 +9,6 @@ public class TheaterDto {
 
     private String theaterName;
 
-    private Integer seatTotal;
+    private Integer seatAvailable;
+
 }
