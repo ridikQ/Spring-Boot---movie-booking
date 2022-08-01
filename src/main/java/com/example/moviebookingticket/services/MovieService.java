@@ -3,9 +3,11 @@ package com.example.moviebookingticket.services;
 import com.example.moviebookingticket.converters.MovieConverter;
 import com.example.moviebookingticket.dto.MovieDto;
 import com.example.moviebookingticket.dto.TheaterDto;
+import com.example.moviebookingticket.dto.TimeTableDto;
 import com.example.moviebookingticket.entity.BookingEntity;
 import com.example.moviebookingticket.entity.MovieEntity;
 import com.example.moviebookingticket.entity.TheaterEntity;
+import com.example.moviebookingticket.entity.TimeTableEntity;
 import com.example.moviebookingticket.exception.IllegalStateException;
 import com.example.moviebookingticket.repository.BookingRepository;
 import com.example.moviebookingticket.repository.MovieRepository;
@@ -60,5 +62,10 @@ public class MovieService {
         } else {
             movieRepository.deleteById(id);
         }
+    }
+    public MovieDto updateMovie(MovieDto movieDto) {
+        MovieEntity movieEntity = movieConverter.toEntity(movieDto);
+        movieRepository.save(movieEntity);
+        return movieDto;
     }
 }

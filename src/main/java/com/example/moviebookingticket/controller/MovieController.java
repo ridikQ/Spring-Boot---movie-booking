@@ -1,6 +1,7 @@
 package com.example.moviebookingticket.controller;
 
 import com.example.moviebookingticket.dto.MovieDto;
+import com.example.moviebookingticket.dto.TimeTableDto;
 import com.example.moviebookingticket.entity.MovieEntity;
 import com.example.moviebookingticket.exception.IllegalStateException;
 import com.example.moviebookingticket.services.MovieService;
@@ -38,5 +39,10 @@ public class MovieController {
     public ResponseEntity<MovieDto> deleteMovie(@PathVariable("id") Long id) {
         movieService.deleteMovie(id);
         return new ResponseEntity("Movie deleted",HttpStatus.NO_CONTENT);
+    }
+    @ApiOperation(value = "Update movie")
+    @PutMapping("/{id}")
+    public ResponseEntity<MovieDto> updateMovie(@RequestBody MovieDto movieDto) {
+        return ResponseEntity.ok(movieService.updateMovie(movieDto));
     }
 }
