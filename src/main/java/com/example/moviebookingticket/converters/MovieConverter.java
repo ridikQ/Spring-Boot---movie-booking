@@ -38,7 +38,7 @@ public class MovieConverter implements BidirectionalConverter<MovieDto, MovieEnt
         movieEntity.setType(movieDto.getType());
         movieEntity.setTechnology(movieDto.getTechnology());
         movieEntity.setRating(movieDto.getRating());
-        movieEntity.setTheater(theaterConverter.toEntity(movieDto.getTheater()));
+        movieEntity.setTheater(theaterConverter.getTheaterId(movieDto.getTheater()));
         return movieEntity;
     }
     public MovieEntity getMovieId(MovieDto dto){
