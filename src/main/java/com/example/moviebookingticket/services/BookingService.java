@@ -2,8 +2,10 @@ package com.example.moviebookingticket.services;
 
 import com.example.moviebookingticket.converters.BookingConverter;
 import com.example.moviebookingticket.dto.BookingDto;
+import com.example.moviebookingticket.dto.TimeTableDto;
 import com.example.moviebookingticket.entity.BookingEntity;
 import com.example.moviebookingticket.entity.MovieEntity;
+import com.example.moviebookingticket.entity.TimeTableEntity;
 import com.example.moviebookingticket.repository.BookingRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -59,6 +61,11 @@ public class BookingService {
             bookingRepository.deleteById(id);
             return true;
         }
+    public BookingDto updateBooking(BookingDto bookingDto) {
+        BookingEntity bookingEntity = bookingConverter.toEntity(bookingDto);
+        bookingRepository.save(bookingEntity);
+        return bookingDto;
+    }
 
 
     }
