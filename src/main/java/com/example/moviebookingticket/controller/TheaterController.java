@@ -2,6 +2,7 @@ package com.example.moviebookingticket.controller;
 
 import com.example.moviebookingticket.dto.BookingDto;
 import com.example.moviebookingticket.dto.TheaterDto;
+import com.example.moviebookingticket.dto.TimeTableDto;
 import com.example.moviebookingticket.entity.TheaterEntity;
 import com.example.moviebookingticket.services.TheaterService;
 import io.swagger.annotations.ApiOperation;
@@ -37,5 +38,10 @@ public class TheaterController {
     public ResponseEntity<TheaterDto> deleteTheater(@PathVariable("id") Long id) {
         theaterService.deleteTheater(id);
         return new ResponseEntity("Theater deleted", HttpStatus.NO_CONTENT);
+    }
+    @ApiOperation(value = "Update theater")
+    @PutMapping("/{id}")
+    public ResponseEntity<TheaterDto> updateTheater(@RequestBody TheaterDto theaterDto) {
+        return ResponseEntity.ok(theaterService.updateTheater(theaterDto));
     }
 }

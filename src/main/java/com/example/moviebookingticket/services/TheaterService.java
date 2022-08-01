@@ -1,10 +1,7 @@
 package com.example.moviebookingticket.services;
 
 import com.example.moviebookingticket.converters.TheaterConverter;
-import com.example.moviebookingticket.dto.MovieDto;
-import com.example.moviebookingticket.dto.StatusEnum;
 import com.example.moviebookingticket.dto.TheaterDto;
-import com.example.moviebookingticket.entity.BookingEntity;
 import com.example.moviebookingticket.entity.MovieEntity;
 import com.example.moviebookingticket.entity.TheaterEntity;
 import com.example.moviebookingticket.repository.MovieRepository;
@@ -52,5 +49,10 @@ public class TheaterService {
         } else {
             theaterRepository.deleteById(id);
         }
+    }
+    public TheaterDto updateTheater(TheaterDto theaterDto) {
+        TheaterEntity theaterEntity = theaterConverter.toEntity(theaterDto);
+        theaterRepository.save(theaterEntity);
+        return theaterDto;
     }
 }
