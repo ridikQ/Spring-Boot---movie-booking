@@ -57,6 +57,11 @@ public class UserService {
 
         return userConverter.toDto(userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(id)));
     }
+    public UserDto updateUser(UserDto userDto) {
+        UserEntity userEntity = userConverter.toEntity(userDto);
+        userRepository.save(userEntity);
+        return userDto;
+    }
 
 
 }

@@ -21,25 +21,25 @@ public class UserController {
 
     @ApiOperation(value = "Get all users")
     @GetMapping("/all")
-    public ResponseEntity<List<UserDto>> getAllUser(
-            @RequestParam(defaultValue = "0") Integer pageNo,
-            @RequestParam(defaultValue = "10") Integer pageSize,
-            @RequestParam(defaultValue ="id")String sortBy) {
-        return new ResponseEntity<>(userService.getAllUsers(pageNo,pageSize,sortBy), HttpStatus.OK);
+    public ResponseEntity<List<UserDto>> getAllUser(@RequestParam(defaultValue = "0") Integer pageNo, @RequestParam(defaultValue = "10") Integer pageSize, @RequestParam(defaultValue = "id") String sortBy) {
+        return new ResponseEntity<>(userService.getAllUsers(pageNo, pageSize, sortBy), HttpStatus.OK);
     }
 
     @ApiOperation(value = "Add a new user")
     @PostMapping("/add")
     public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
 
-        return ResponseEntity.ok(userService.addUser(userDto)) ;
+        return ResponseEntity.ok(userService.addUser(userDto));
     }
 
     @ApiOperation(value = "Get user by id")
     @GetMapping("/{id}")
     public ResponseEntity<UserDto> getUserById(@PathVariable("id") Long id) {
         return ResponseEntity.ok(userService.getUserById(id));
-
-
+    }
+    @ApiOperation(value = "Update user")
+    @PutMapping ("/{id}")
+    public ResponseEntity<UserDto> updateUser(@RequestBody UserDto userDto) {
+        return ResponseEntity.ok(userService.updateUser(userDto));
     }
 }
