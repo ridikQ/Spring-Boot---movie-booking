@@ -774,3 +774,6 @@ java.sql.SQLIntegrityConstraintViolationException: Column 'seats_available' cann
 2022-08-01 23:27:07.210  INFO 15964 --- [restartedMain] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
 2022-08-01 23:27:07.221  INFO 15964 --- [restartedMain] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
 2022-08-01 23:27:07.533  INFO 15964 --- [restartedMain] c.e.m.MoviebookingticketApplication      : Started MoviebookingticketApplication in 6.671 seconds (JVM running for 8.362)
+2022-08-01 23:28:53.133  INFO 15964 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-08-01 23:28:53.138  INFO 15964 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-08-01 23:28:53.151  INFO 15964 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
