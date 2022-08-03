@@ -16,4 +16,6 @@ public class MovieDto {
     private Double rating;
 
     private TheaterDto theater;
+
+    private TimeTableDto timeTableDto;
 }

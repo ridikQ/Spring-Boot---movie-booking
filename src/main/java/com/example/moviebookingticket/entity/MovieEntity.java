@@ -37,10 +37,12 @@ public class MovieEntity {
     @JsonIgnore
     private TheaterEntity theater;
 
+    @ManyToOne
+    @JoinColumn(name="timetable_id")
+    @JsonIgnore
+    private TimeTableEntity timeTable;
+
     @OneToMany(mappedBy = "movie")
     private List<BookingEntity> bookingEntities = new ArrayList<>();
-
-    @OneToMany(mappedBy = "movieEntity")
-    private List<TimeTableEntity> timeTableEntities = new ArrayList<>();
 
 }

@@ -30,7 +30,9 @@ public class TimeTableService {
         if (timeTableDto.getStartTime().after(timeTableDto.getEndTime()) || timeTableDto.getStartTime().equals(timeTableDto.getEndTime())) {
             throw new InvalidDateException("Enter a valid time");
         }
-
+            if(timeTableDto.getStartDate().after(timeTableDto.getEndDate()) || timeTableDto.getStartDate().equals(timeTableDto.getEndDate())){
+                throw new InvalidDateException("Enter a valid date");
+    }
         else {
             TimeTableEntity timeTableEntity = timeTableConverter.toEntity(timeTableDto);
             timeTableRepository.save(timeTableEntity);

@@ -1,10 +1,13 @@
 package com.example.moviebookingticket.converters;
 
 import com.example.moviebookingticket.dto.MovieDto;
+import com.example.moviebookingticket.dto.TimeTableDto;
 import com.example.moviebookingticket.dto.UserDto;
 import com.example.moviebookingticket.entity.MovieEntity;
+import com.example.moviebookingticket.entity.TimeTableEntity;
 import com.example.moviebookingticket.entity.UserEntity;
 import com.example.moviebookingticket.repository.MovieRepository;
+import com.example.moviebookingticket.repository.TimeTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,6 +16,9 @@ public class MovieConverter implements BidirectionalConverter<MovieDto, MovieEnt
 
     @Autowired
     private TheaterConverter theaterConverter;
+
+    @Autowired
+    private TimeTableConverter timeTableConverter;
 
     @Autowired
     private MovieRepository movieRepository;
@@ -26,6 +32,7 @@ public class MovieConverter implements BidirectionalConverter<MovieDto, MovieEnt
         movieDto.setTechnology(movieEntity.getTechnology());
         movieDto.setRating(movieEntity.getRating());
         movieDto.setTheater(theaterConverter.toDto(movieEntity.getTheater()));
+        movieDto.setTimeTableDto(timeTableConverter.toDto(movieEntity.getTimeTable()));
 
         return movieDto;
     }
@@ -39,9 +46,11 @@ public class MovieConverter implements BidirectionalConverter<MovieDto, MovieEnt
         movieEntity.setTechnology(movieDto.getTechnology());
         movieEntity.setRating(movieDto.getRating());
         movieEntity.setTheater(theaterConverter.getTheaterId(movieDto.getTheater()));
+        movieEntity.setTimeTable(timeTableConverter.getTimeTableById(movieDto.getTimeTableDto()));
         return movieEntity;
     }
     public MovieEntity getMovieId(MovieDto dto){
         return movieRepository.getById(dto.getId());
     }
+
 }

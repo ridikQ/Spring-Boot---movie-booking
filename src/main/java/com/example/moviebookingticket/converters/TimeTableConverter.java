@@ -2,6 +2,7 @@ package com.example.moviebookingticket.converters;
 
 import com.example.moviebookingticket.dto.TimeTableDto;
 import com.example.moviebookingticket.entity.TimeTableEntity;
+import com.example.moviebookingticket.repository.TimeTableRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,16 +10,17 @@ import org.springframework.stereotype.Component;
 public class TimeTableConverter implements BidirectionalConverter<TimeTableDto, TimeTableEntity> {
 
     @Autowired
-    private MovieConverter movieConverter;
+    private TimeTableRepository timeTableRepository;
+
 
     @Override
     public TimeTableDto toDto(TimeTableEntity timeTableEntity) {
         TimeTableDto timeTableDto = new TimeTableDto();
         timeTableDto.setId(timeTableEntity.getId());
-        timeTableDto.setDate(timeTableEntity.getDate());
+        timeTableDto.setStartDate(timeTableEntity.getStartDate());
+        timeTableDto.setEndDate(timeTableEntity.getEndDate());
         timeTableDto.setStartTime(timeTableEntity.getStartTime());
         timeTableDto.setEndTime(timeTableEntity.getEndTime());
-        timeTableDto.setMovieDto(movieConverter.toDto(timeTableEntity.getMovieEntity()));
         return timeTableDto;
     }
 
@@ -26,10 +28,14 @@ public class TimeTableConverter implements BidirectionalConverter<TimeTableDto, 
     public TimeTableEntity toEntity(TimeTableDto timeTableDto) {
         TimeTableEntity timeTableEntity = new TimeTableEntity();
         timeTableEntity.setId(timeTableDto.getId());
-        timeTableEntity.setDate(timeTableDto.getDate());
+        timeTableEntity.setStartDate(timeTableDto.getStartDate());
+        timeTableEntity.setEndDate(timeTableDto.getEndDate());
         timeTableEntity.setStartTime(timeTableDto.getStartTime());
         timeTableEntity.setEndTime(timeTableDto.getEndTime());
-        timeTableEntity.setMovieEntity(movieConverter.getMovieId(timeTableDto.getMovieDto()));
         return timeTableEntity;
     }
+    public TimeTableEntity getTimeTableById(TimeTableDto dto){
+        return timeTableRepository.getById(dto.getId());
+    }
+
 }

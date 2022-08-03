@@ -8,10 +8,12 @@ import org.hibernate.annotations.Where;
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Min;
+
+
 import java.sql.Date;
 import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "timetable")
@@ -25,8 +27,12 @@ public class TimeTableEntity {
     private Long id;
 
     @FutureOrPresent(message = "Date need to be in the present or in the future")
-    @Column(name = "date")
-    private Date date;
+    @Column(name = "start_date")
+    private Date startDate;
+
+    @FutureOrPresent(message = "Date need to be in the present or in the future")
+    @Column(name="end_date")
+    private Date endDate;
 
     @Column(name = "start_time")
     private Time startTime;
@@ -34,8 +40,6 @@ public class TimeTableEntity {
     @Column(name = "end_time")
     private Time endTime;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
-    @JoinColumn(name = "movie_id")
-    @JsonIgnore
-    private MovieEntity movieEntity;
+    @OneToMany(mappedBy = "timeTable")
+    private List<MovieEntity> movie = new ArrayList<>();
 }

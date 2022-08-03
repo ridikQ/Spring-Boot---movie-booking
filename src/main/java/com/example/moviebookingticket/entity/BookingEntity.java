@@ -12,7 +12,8 @@ import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.sql.Date;
+
 
 @Entity
 @Table(name = "booking")

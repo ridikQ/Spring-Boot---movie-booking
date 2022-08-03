@@ -6,6 +6,7 @@ import com.example.moviebookingticket.dto.TimeTableDto;
 import com.example.moviebookingticket.entity.BookingEntity;
 import com.example.moviebookingticket.entity.MovieEntity;
 import com.example.moviebookingticket.entity.TimeTableEntity;
+import com.example.moviebookingticket.exception.InvalidDateException;
 import com.example.moviebookingticket.repository.BookingRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -36,11 +39,16 @@ public class BookingService {
         return bookingRepository.findAll(paging).stream().map(bookingConverter::toDto).collect(Collectors.toList());
     }
 
-    public BookingDto addBooking(BookingDto bookingDto) {
+    public BookingDto addBooking(BookingDto bookingDto) throws InvalidDateException {
         BookingEntity bookingEntity = bookingConverter.toEntity(bookingDto);
-        if ( bookingEntity.getMovie().getTheater().getSeatAvailable()<=0){
-            log.warn("No seats Available");
-            return  null;
+        if (bookingEntity.getMovie().getTheater().getSeatAvailable()==0){
+            throw new InvalidDateException("Empty");
+        }
+        if ( bookingEntity.getSeatAmount()>bookingEntity.getMovie().getTheater().getSeatAvailable()){
+            throw new InvalidDateException("No seats available try to lower your ticket amount");
+                }
+        if (bookingEntity.getDate().before(bookingEntity.getMovie().getTimeTable().getStartDate()) || bookingEntity.getDate().after(bookingEntity.getMovie().getTimeTable().getEndDate())){
+            throw new InvalidDateException("Date does not exist");
         }
         else {
             Integer seatTotal=bookingEntity.getMovie().getTheater().getSeatAvailable()-bookingEntity.getSeatAmount();
