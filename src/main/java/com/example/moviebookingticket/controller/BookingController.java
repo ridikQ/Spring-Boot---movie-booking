@@ -1,15 +1,12 @@
 package com.example.moviebookingticket.controller;
 
 import com.example.moviebookingticket.dto.BookingDto;
-import com.example.moviebookingticket.dto.TimeTableDto;
-import com.example.moviebookingticket.entity.BookingEntity;
 import com.example.moviebookingticket.services.BookingService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController

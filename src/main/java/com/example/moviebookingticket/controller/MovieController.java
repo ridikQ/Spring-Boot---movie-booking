@@ -30,7 +30,7 @@ public class MovieController {
 
     @ApiOperation(value = "Add a new movie")
     @PostMapping("/add")
-    public ResponseEntity<MovieDto> addMovie(@RequestBody MovieDto movieDto)throws IllegalStateException{
+    public ResponseEntity<MovieDto> addMovie(@RequestBody MovieDto movieDto){
         return ResponseEntity.ok(movieService.addMovie(movieDto));
     }
 

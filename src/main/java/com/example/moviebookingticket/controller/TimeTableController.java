@@ -19,7 +19,7 @@ public class TimeTableController {
 
     @ApiOperation(value = "Add a new timetable")
     @PostMapping("/add")
-    public ResponseEntity<TimeTableDto>addTimeTable(@RequestBody TimeTableDto timeTableDto)throws InvalidDateException {
+    public ResponseEntity<TimeTableDto>addTimeTable(@RequestBody TimeTableDto timeTableDto) {
        return ResponseEntity.ok(timeTableService.addTimeTable(timeTableDto));
     }
     @ApiOperation(value = "Update timetable")
