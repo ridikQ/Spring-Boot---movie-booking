@@ -4,6 +4,7 @@ import com.example.moviebookingticket.converters.TheaterConverter;
 import com.example.moviebookingticket.dto.TheaterDto;
 import com.example.moviebookingticket.entity.MovieEntity;
 import com.example.moviebookingticket.entity.TheaterEntity;
+import com.example.moviebookingticket.exception.RuleDeleteException;
 import com.example.moviebookingticket.repository.MovieRepository;
 import com.example.moviebookingticket.repository.TheaterRepository;
 import org.slf4j.Logger;
@@ -46,6 +47,7 @@ public class TheaterService {
         MovieEntity movieEntity = movieRepository.getById(id);
         if (movieRepository.existsById(movieEntity.getId())) {
             log.error("Theater is already booked");
+            throw new RuleDeleteException("Theater cannont be deleted");
         } else {
             theaterRepository.deleteById(id);
         }
