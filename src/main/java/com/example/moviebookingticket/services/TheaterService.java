@@ -47,7 +47,7 @@ public class TheaterService {
         MovieEntity movieEntity = movieRepository.getById(id);
         if (movieRepository.existsById(movieEntity.getId())) {
             log.error("Theater is already booked");
-            throw new RuleDeleteException("Theater cannont be deleted");
+            throw new RuleDeleteException("Theater cannot be deleted");
         } else {
             theaterRepository.deleteById(id);
         }

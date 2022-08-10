@@ -19,7 +19,6 @@ public class UserConverter implements BidirectionalConverter<UserDto, UserEntity
         userDto.setName(userEntity.getName());
         userDto.setSurname(userEntity.getSurname());
         userDto.setBirthdate(userEntity.getBirthdate());
-        userDto.setRole(userEntity.getRole());
         userDto.setEmail(userEntity.getEmail());
         userDto.setPassword(userEntity.getPassword());
         userDto.setTelephone(userEntity.getTelephone());
@@ -34,7 +33,6 @@ public class UserConverter implements BidirectionalConverter<UserDto, UserEntity
         userEntity.setName(userDto.getName());
         userEntity.setSurname(userDto.getSurname());
         userEntity.setBirthdate(userDto.getBirthdate());
-        userEntity.setRole(userDto.getRole());
         userEntity.setEmail(userDto.getEmail());
         userEntity.setPassword(userDto.getPassword());
         userEntity.setTelephone(userDto.getTelephone());

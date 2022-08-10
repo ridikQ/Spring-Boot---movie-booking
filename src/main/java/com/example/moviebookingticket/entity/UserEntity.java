@@ -30,9 +30,6 @@ public class UserEntity {
     @Column(name = "birthdate")
     private Date birthdate;
 
-    @Column(name = "role")
-    private String role;
-
  //   @NotEmpty(message = "Email is mandatory")
     @Column(name = "email",unique = true)
     private String email;
@@ -46,4 +43,5 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user")
     private List<BookingEntity> bookingEntities = new ArrayList<>();
+
 }

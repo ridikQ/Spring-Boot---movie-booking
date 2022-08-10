@@ -24,7 +24,6 @@ public class TheaterEntity {
     @Column(name = "theater_name")
     private String theaterName;
 
-    @Min(value = 0)
     @Column(name="seats_available")
     private Integer seatAvailable;
 
